@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kundendaten>
+
+    <kunde>
+        <id>10022</id>
+        <vorname>Felicitas</vorname>
+        <nachname>Fehrer</nachname>
+        <geschlecht>w</geschlecht>
+        <anschrift>
+            <strasse>Josefstraße</strasse>
+            <hausnr>13</hausnr>
+            <plz>82098</plz>
+            <ort>Fürstenfeldbruck</ort>
+        </anschrift>
+    </kunde>
+
+    <kunde>
+        <id>10302</id>
+        <vorname>Harry</vorname>
+        <nachname>Potter</nachname>
+        <geschlecht>m</geschlecht>
+        <anschrift>
+            <strasse>Liebigstraße</strasse>
+            <hausnr>155</hausnr>
+            <plz>50823</plz>
+            <ort>Köln</ort>
+        </anschrift>
+    </kunde>
+
+</kundendaten>

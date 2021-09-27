@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kundendaten>
+
+    <kunde>
+        <id>90001</id>
+        <vorname>Johannes</vorname>
+        <nachname>Reh</nachname>
+        <geschlecht>m</geschlecht>
+        <anschrift>
+            <strasse>Achimstraße</strasse>
+            <hausnr>13</hausnr>
+            <plz>82008</plz>
+            <ort>Unterhaching</ort>
+        </anschrift>
+    </kunde>
+
+    <kunde>
+        <id>90002</id>
+        <vorname>Nicklas</vorname>
+        <nachname>Petersen</nachname>
+        <geschlecht>m</geschlecht>
+        <anschrift>
+            <strasse>Liebigstraße</strasse>
+            <hausnr>155</hausnr>
+            <plz>50823</plz>
+            <ort>Koeln</ort>
+        </anschrift>
+    </kunde>
+
+    <kunde>
+        <id>90003</id>
+        <vorname>Vanessa</vorname>
+        <nachname>Berg</nachname>
+        <geschlecht>w</geschlecht>
+        <anschrift>
+            <strasse>Fenchelweg</strasse>
+            <hausnr>15</hausnr>
+            <plz>60893</plz>
+            <ort>Hirschdorf</ort>
+        </anschrift>
+    </kunde>
+
+    <kunde>
+        <id>90004</id>
+        <vorname>Brigitte</vorname>
+        <nachname>Netzer</nachname>
+        <geschlecht>w</geschlecht>
+        <anschrift>
+            <strasse>Eichenweg</strasse>
+            <hausnr>98</hausnr>
+            <plz>77722</plz>
+            <ort>Fantasiastadt</ort>
+        </anschrift>
+    </kunde>
+
+</kundendaten>

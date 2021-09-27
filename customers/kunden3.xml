@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kundendaten>
+
+    <kunde>
+        <id>19022</id>
+        <vorname>Frodo</vorname>
+        <nachname>Beutlin</nachname>
+        <geschlecht>m</geschlecht>
+        <anschrift>
+            <strasse>Beutelsend</strasse>
+            <hausnr>13</hausnr>
+            <plz>82498</plz>
+            <ort>Auenland</ort>
+        </anschrift>
+    </kunde>
+
+    <kunde>
+        <id>19302</id>
+        <vorname>Angela</vorname>
+        <nachname>Merkel</nachname>
+        <geschlecht>w</geschlecht>
+        <anschrift>
+            <strasse>Bundesweg</strasse>
+            <hausnr>195</hausnr>
+            <plz>18999</plz>
+            <ort>Berlin</ort>
+        </anschrift>
+    </kunde>
+
+</kundendaten>

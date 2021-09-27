@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fahrzeugdaten>
+
+    <fahrzeug>
+        <id>20111</id>
+        <fahrzeugtyp>PKW</fahrzeugtyp>
+        <hersteller>Audi</hersteller>
+        <fahrzeugbezeichnung>A5</fahrzeugbezeichnung>
+        <leistung>350</leistung>
+        <verkaufspreis>54000</verkaufspreis>
+    </fahrzeug>
+
+    <fahrzeug>
+        <id>20222</id>
+        <fahrzeugtyp>PKW</fahrzeugtyp>
+        <hersteller>Aston Martin</hersteller>
+        <fahrzeugbezeichnung>Vanquish</fahrzeugbezeichnung>
+        <leistung>680</leistung>
+        <verkaufspreis>158000</verkaufspreis>
+    </fahrzeug>
+
+    <fahrzeug>
+        <id>20333</id>
+        <fahrzeugtyp>PKW</fahrzeugtyp>
+        <hersteller>Ferrari</hersteller>
+        <fahrzeugbezeichnung>F3</fahrzeugbezeichnung>
+        <leistung>699</leistung>
+        <verkaufspreis>119899</verkaufspreis>
+    </fahrzeug>
+
+</fahrzeugdaten>
+

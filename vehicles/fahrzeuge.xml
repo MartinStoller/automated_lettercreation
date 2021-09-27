@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fahrzeugdaten>
+
+    <fahrzeug>
+        <id>80001</id>
+        <fahrzeugtyp>PKW</fahrzeugtyp>
+        <hersteller>Skoda</hersteller>
+        <fahrzeugbezeichnung>Karoq</fahrzeugbezeichnung>
+        <leistung>150</leistung>
+        <verkaufspreis>36000</verkaufspreis>
+    </fahrzeug>
+
+    <fahrzeug>
+        <id>80002</id>
+        <fahrzeugtyp>PKW</fahrzeugtyp>
+        <hersteller>BMW</hersteller>
+        <fahrzeugbezeichnung>M3</fahrzeugbezeichnung>
+        <leistung>680</leistung>
+        <verkaufspreis>76000</verkaufspreis>
+    </fahrzeug>
+
+    <fahrzeug>
+        <id>80003</id>
+        <fahrzeugtyp>Motorrad</fahrzeugtyp>
+        <hersteller>BMW</hersteller>
+        <fahrzeugbezeichnung>CE 04</fahrzeugbezeichnung>
+        <leistung>90</leistung>
+        <verkaufspreis>9899</verkaufspreis>
+    </fahrzeug>
+
+    <fahrzeug>
+        <id>80004</id>
+        <fahrzeugtyp>LKW</fahrzeugtyp>
+        <hersteller>MAN</hersteller>
+        <fahrzeugbezeichnung>TGS</fahrzeugbezeichnung>
+        <leistung>720</leistung>
+        <verkaufspreis>120000</verkaufspreis>
+    </fahrzeug>
+
+    <fahrzeug>
+        <id>80005</id>
+        <fahrzeugtyp>PKW</fahrzeugtyp>
+        <hersteller>Aston Martin</hersteller>
+        <fahrzeugbezeichnung>DB9</fahrzeugbezeichnung>
+        <leistung>620</leistung>
+        <verkaufspreis>160000</verkaufspreis>
+    </fahrzeug>
+
+</fahrzeugdaten>
+

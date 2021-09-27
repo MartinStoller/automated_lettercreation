@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fahrzeugdaten>
+
+    <fahrzeug>
+        <id>20011</id>
+        <fahrzeugtyp>PKW</fahrzeugtyp>
+        <hersteller>BMW</hersteller>
+        <fahrzeugbezeichnung>330i</fahrzeugbezeichnung>
+        <leistung>350</leistung>
+        <verkaufspreis>56000</verkaufspreis>
+    </fahrzeug>
+
+    <fahrzeug>
+        <id>20022</id>
+        <fahrzeugtyp>PKW</fahrzeugtyp>
+        <hersteller>Tesla</hersteller>
+        <fahrzeugbezeichnung>Model3</fahrzeugbezeichnung>
+        <leistung>680</leistung>
+        <verkaufspreis>58000</verkaufspreis>
+    </fahrzeug>
+
+    <fahrzeug>
+        <id>20033</id>
+        <fahrzeugtyp>Motorrad</fahrzeugtyp>
+        <hersteller>Suzuki</hersteller>
+        <fahrzeugbezeichnung>Hayabuza</fahrzeugbezeichnung>
+        <leistung>190</leistung>
+        <verkaufspreis>19899</verkaufspreis>
+    </fahrzeug>
+
+</fahrzeugdaten>
+
