@@ -1,11 +1,10 @@
 package com.company.lettercreation;
 
-import javax.swing.text.Document;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Scanner;
 
 import java.io.BufferedReader;
