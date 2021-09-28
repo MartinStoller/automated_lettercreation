@@ -25,8 +25,9 @@ public class MyJDBC {
         int columnsNumber = rsmd.getColumnCount();
 
         while (resultSet.next()) {
-            for(int i = 1; i <= columnsNumber; i++)
+            for(int i = 1; i <= columnsNumber; i++) {
                 System.out.print(resultSet.getString(i) + " ");
+            }
             System.out.println();
         }
 
