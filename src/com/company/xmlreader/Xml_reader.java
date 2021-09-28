@@ -14,6 +14,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import com.company.customer.Customer;
+import com.company.lettercreation.LetterCreation;
 import com.company.vehicle.Vehicle;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -22,7 +23,6 @@ import org.xml.sax.SAXException;
 
 import com.company.xml_location_input.Xml_location_input;
 import com.company.myjdbc.MyJDBC;
-
 
 public class Xml_reader {
 
@@ -72,6 +72,8 @@ public class Xml_reader {
 
         MyJDBC.editDbQuery(1);
         System.out.println();
+
+        LetterCreation.createLetters();
 
 
     }
