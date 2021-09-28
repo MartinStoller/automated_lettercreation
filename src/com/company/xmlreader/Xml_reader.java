@@ -72,6 +72,8 @@ public class Xml_reader {
 
         MyJDBC.editDbQuery(1);
         System.out.println();
+
+
     }
 
     private void parseXmlFile(String location, int custOrVehic) throws IOException, ParserConfigurationException {
