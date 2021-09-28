@@ -37,18 +37,19 @@ public class MyJDBC {
 
     public static void editDbQuery(int custOrVehic) {
         Scanner scanner2 = new Scanner(System.in);
-        System.out.println("Press 'c' to continue. Press 'e' to edit the database.");
+        System.out.println("Above is the current Database. Press 'c' to continue. Press 'e' to edit the database.");
         String continueOrEdit = scanner2.nextLine();
+        System.out.println(continueOrEdit);
 
-        if (continueOrEdit.equals('c')) {
+        if (continueOrEdit.equals("c")) {
         }
-        else if (continueOrEdit.equals('e')) {
-            //TODO
+        else if (continueOrEdit.equals("e")) {
             System.out.println("Type in SQL command:");
             String query = scanner2.nextLine();
             editDb(custOrVehic, query);
 
         } else {
+
             System.out.println("Input not valid. Type either 'c' to continue or 'e' to edit database");
             editDbQuery(custOrVehic);
         }
@@ -61,8 +62,8 @@ public class MyJDBC {
         try{
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/haeger-db", "root"
                     , "MartinStoller");
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
 
         System.out.println("Command executed: Database now looks like this:");
     } catch (Exception e) {
