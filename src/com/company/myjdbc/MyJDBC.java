@@ -58,8 +58,16 @@ public class MyJDBC {
         //3.) show new version of database and start at 1.) again
 
     public static void editDb(int custOrVehic, String query) {
-        //TODO: execute query
+        try{
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/haeger-db", "root"
+                    , "MartinStoller");
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
         System.out.println("Command executed: Database now looks like this:");
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
         if (custOrVehic == 0){
             printDatabase("customers");
         } else{

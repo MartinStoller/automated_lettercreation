@@ -47,9 +47,10 @@ public class Xml_reader {
         System.out.println("done.");
         System.out.println();
 
-        System.out.println("This is the current customer database. Type 'c' to continue. Type 'e' to edit.");
         System.out.println(" ID,Vorname,Nachname,Geschlecht,Straße,Nr,PLZ,Ort");
         MyJDBC.printDatabase("customers");//TODO: print database and wait for command
+        System.out.println("Above is the current customer database. Type 'c' to continue. Type 'e' to edit.");
+        MyJDBC.editDbQuery(0);
         System.out.println();
 
         // parse all vehicle xml data in given folder:
@@ -66,9 +67,10 @@ public class Xml_reader {
         System.out.println("done.");
         System.out.println();
 
-        System.out.println("This is the current vehicle database. Type 'c' to continue. Type 'e' to edit.");
         System.out.println("ID,Typ,Hersteller,Bezeichnung,Leistung,Preis");
-        MyJDBC.printDatabase("vehicles"); //TODO: print database and wait for command
+        MyJDBC.printDatabase("vehicles");
+        System.out.println("Above is the current vehicle database. Type 'c' to continue. Type 'e' to edit.");
+        MyJDBC.editDbQuery(1);
         System.out.println();
     }
 
