@@ -55,9 +55,6 @@ public class MyJDBC {
             editDbQuery(custOrVehic);
         }
     }
-        // idea: 1.) wait for input c vs e: if c, then done
-        //2.) if e: connect to the correct table via int custOrVehic and let person type in sql command
-        //3.) show new version of database and start at 1.) again
 
     public static void editDb(int custOrVehic, String query) {
         try{

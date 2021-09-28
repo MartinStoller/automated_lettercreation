@@ -31,13 +31,13 @@ public class LetterCreation {
 
     }
 
-    private static void convertTxtToPdf(String customerId){
+    private static void convertTxtToPdf(String customerName){
         FileInputStream fis = null;
         DataInputStream in = null;
         InputStreamReader isr = null;
         BufferedReader br = null;
         File sourceFile = new File("testletter.txt");
-        File destFile = new File("letters\\" + customerId + ".pdf");
+        File destFile = new File("letters\\" + customerName + ".pdf");
 
         try{
             com.itextpdf.text.Document pdfDoc = new com.itextpdf.text.Document();
@@ -68,7 +68,7 @@ public class LetterCreation {
                     para.setAlignment(Element.ALIGN_JUSTIFIED);
                     pdfDoc.add(para);
                 }
-                System.out.println("Letter for Customer " + customerId + "created successfully");
+                System.out.println("Letter for Customer " + customerName + " created successfully");
             } else {
                 System.out.println("Source File not found!");
             }
@@ -147,13 +147,13 @@ public class LetterCreation {
             genderText = "geehrter Herr ";
         }
 
-        String vehicles = getVehiclesString(); // TODO: write a function that provides a vehicle List
+        String vehicles = getVehiclesString();
 
         String content = firstName + " " + lastName + " \n" + street + " " + houseNr + " \n" + postalCode + " " +
                 city + " \n" + " \n" + " \n" + " \n" + "Sehr " + genderText + lastName + ",\n" + "\n" + "anbei finden Sie eine " +
                 "Liste unserer aktuellen Angebote. Zögern Sie nicht uns bei Interesse oder Fragen jeglicher Art zu " +
                 "kontaktieren." + "\n" + "\n"  + vehicles + "\n" +
-                "\n" + "\n" + "Mit " + "freundlichen Grüßen \nClaudia Mustermann \nGeschäftsführering Autohaus XY";
+                "\n" + "\n" + "Mit " + "freundlichen Grüßen \nClaudia Mustermann \nGeschäftsführerin Autohaus XY";
 
         String fileName = "testletter.txt";
         try {
