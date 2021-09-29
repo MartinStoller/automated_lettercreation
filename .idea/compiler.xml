@@ -6,9 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="haeger_task_ms8" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="haeger_task_ms8" target="17" />
       <module name="iTextPdf" target="17" />
     </bytecodeTargetLevel>
   </component>
