@@ -161,7 +161,7 @@ public class LetterCreation {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        convertTxtToPdf(lastName);
+        convertTxtToPdf(firstName + "_" + lastName);
     }
 
     private static String getVehiclesString() {
