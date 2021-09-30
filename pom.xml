@@ -13,6 +13,13 @@
             <artifactId>itextpdf</artifactId>
             <version>5.5.13.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.26</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
