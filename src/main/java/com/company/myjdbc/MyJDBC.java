@@ -9,11 +9,6 @@ import java.util.Scanner;
 
 public class MyJDBC {
 
-    public static void main(String[] args) {
-        printDatabase("customers");
-        printDatabase("vehicles");
-    }
-
     public static void printDatabase(String table) {
         try{
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/haeger-db", "root"
@@ -75,4 +70,71 @@ public class MyJDBC {
         editDbQuery(custOrVehic);
     }
 
+
+    public static void addCustomerToDb(Customer customer) {
+        try{
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/haeger-db", "root"
+                    , "MartinStoller");
+            Statement statement = connection.createStatement();
+            String query = "INSERT INTO `haeger-db`.`customers`\n" +
+                    "(`id`,\n" +
+                    "`firstname`,\n" +
+                    "`lastname`,\n" +
+                    "`gender`,\n" +
+                    "`street`,\n" +
+                    "`housenumber`,\n" +
+                    "`postalcode`,\n" +
+                    "`city`)\n" +
+                    "VALUES(\n" +
+                    customer.id + ",\n" +
+                    "'" + customer.firstName + "',\n" +
+                    "'" + customer.lastName + "',\n" +
+                    "'" + customer.gender + "',\n" +
+                    "'" + customer.street + "',\n" +
+                    customer.houseNr + ",\n" +
+                    customer.postalCode + ",\n" +
+                    "'" + customer.city + "'\n" +
+                    ");\n";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+            System.out.println("Customer with ID " + customer.id + " imported successfully.");
+
+        } catch (SQLIntegrityConstraintViolationException es) {
+            System.out.println("Customer with ID " + customer.id + " is already in database. No import.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void addVehicleToDb(Vehicle vehicle) {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/haeger-db", "root"
+                    , "MartinStoller");
+            Statement statement = connection.createStatement();
+            String query = "INSERT INTO `haeger-db`.`vehicles`\n" +
+                    "(`id`,\n" +
+                    "`type`,\n" +
+                    "`brand`,\n" +
+                    "`name`,\n" +
+                    "`power`,\n" +
+                    "`price`)\n" +
+                    "VALUES(\n" +
+                    vehicle.id + ",\n" +
+                    "'" + vehicle.type + "',\n" +
+                    "'" + vehicle.brand + "',\n" +
+                    "'" + vehicle.name + "',\n" +
+                    vehicle.power + ",\n" +
+                    vehicle.price + "\n" +
+                    ")\n";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+            System.out.println("Vehicle with ID " + vehicle.id + " got imported successfully.");
+
+        } catch (SQLIntegrityConstraintViolationException es) {
+            System.out.println("Vehicle with ID " + vehicle.id + " is already in database. No import.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

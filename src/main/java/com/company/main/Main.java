@@ -73,8 +73,6 @@ public class Main {
         System.out.println();
 
         LetterCreation.createLetters();
-
-
     }
 
     private void parseXmlFile(String location, int custOrVehic) throws IOException, ParserConfigurationException {
@@ -134,7 +132,7 @@ public class Main {
     }
 
     /**
-     * I take an kunde element and read the values in, create a Customer object and return it
+     * I take a kunde element and read the values in, create a Customer object and return it
      */
     private Customer getCustomer(Element empEl) {
 
@@ -210,7 +208,7 @@ public class Main {
         // database doesn´t allow for duplicate IDs, so I can just import all Objects from xml files
         Iterator<Customer> it = myCustomers.iterator();
         while (it.hasNext()) {
-            Customer.addCustomerToDb(it.next());
+            MyJDBC.addCustomerToDb(it.next());
         }
     }
 
@@ -218,7 +216,7 @@ public class Main {
         // database doesn´t allow for duplicate IDs, so I can just import all Objects from xml files
         Iterator<Vehicle> it = myVehicles.iterator();
         while (it.hasNext()) {
-            Vehicle.addVehicleToDb(it.next());
+            MyJDBC.addVehicleToDb(it.next());
         }
     }
 

@@ -26,7 +26,7 @@ public class LetterCreation {
         String yn = scanner3.nextLine();
         if (yn.equals("y")) {
             System.out.println("creating letters...");
-            loopThroughCustomerDb();
+            createAllLetters();
         }
 
     }
@@ -92,7 +92,7 @@ public class LetterCreation {
         }
     }
 
-    private static void loopThroughCustomerDb() {
+    private static void createAllLetters() {
         //get variables for Letter
         String firstName = "Loading data did not work";
         String lastName = "Loading data did not work";
