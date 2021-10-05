@@ -7,8 +7,8 @@ import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import com.company.lettercreation.LetterCreation;
-import com.company.xml_location_input.Xml_location_input;
+import com.company.businesslayer.lettercreation.LetterCreation;
+import com.company.businesslayer.xml_location_input.Xml_location_input;
 import com.company.database.DBConnection;
 
 public class Main {

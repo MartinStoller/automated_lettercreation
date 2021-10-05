@@ -1,4 +1,4 @@
-package com.company.lettercreation;
+package com.company.businesslayer.lettercreation;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;

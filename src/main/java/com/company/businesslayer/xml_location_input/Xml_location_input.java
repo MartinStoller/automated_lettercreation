@@ -1,4 +1,4 @@
-package com.company.xml_location_input;
+package com.company.businesslayer.xml_location_input;
 
 import java.util.*;
 

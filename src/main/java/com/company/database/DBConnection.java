@@ -1,7 +1,8 @@
 package com.company.database;
 
-import com.company.customer.Customer;
-import com.company.vehicle.Vehicle;
+import com.company.businesslayer.app_data.AppData;
+import com.company.businesslayer.customer.Customer;
+import com.company.businesslayer.vehicle.Vehicle;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -20,8 +21,8 @@ import java.util.Scanner;
 
 public class DBConnection {
 
-    private List<Customer> myCustomers = new ArrayList<Customer>();
-    private List<Vehicle> myVehicles = new ArrayList<Vehicle>();
+/*    private List<Customer> myCustomers = new ArrayList<Customer>();
+    private List<Vehicle> myVehicles = new ArrayList<Vehicle>(); //TODO: those lists should be part of business layer*/
 
     public static void printDatabase(String table) {
         try{
@@ -88,7 +89,6 @@ public class DBConnection {
         } else{
             printDatabase("vehicles");
         }
-        editDbQuery(custOrVehic);
     }
 
 
@@ -107,22 +107,22 @@ public class DBConnection {
                     "`postalcode`,\n" +
                     "`city`)\n" +
                     "VALUES(\n" +
-                    customer.id + ",\n" +
-                    "'" + customer.firstName + "',\n" +
-                    "'" + customer.lastName + "',\n" +
-                    "'" + customer.gender + "',\n" +
-                    "'" + customer.street + "',\n" +
-                    customer.houseNr + ",\n" +
-                    customer.postalCode + ",\n" +
-                    "'" + customer.city + "'\n" +
+                    customer.getID() + ",\n" +
+                    "'" + customer.getFirstName() + "',\n" +
+                    "'" + customer.getLastName() + "',\n" +
+                    "'" + customer.getGender() + "',\n" +
+                    "'" + customer.getStreet() + "',\n" +
+                    customer.getHouseNr() + ",\n" +
+                    customer.getPostalCode() + ",\n" +
+                    "'" + customer.getCity() + "'\n" +
                     ");\n";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
-            System.out.println("Customer with ID " + customer.id + " imported successfully.");
+            System.out.println("Customer with ID " + customer.getID() + " imported successfully.");
             connection.close();
             preparedStmt.close();
         } catch (SQLIntegrityConstraintViolationException es) {
-            System.out.println("Customer with ID " + customer.id + " is already in database. No import.");
+            System.out.println("Customer with ID " + customer.getID() + " is already in database. No import.");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -142,27 +142,27 @@ public class DBConnection {
                     "`power`,\n" +
                     "`price`)\n" +
                     "VALUES(\n" +
-                    vehicle.id + ",\n" +
-                    "'" + vehicle.type + "',\n" +
-                    "'" + vehicle.brand + "',\n" +
-                    "'" + vehicle.name + "',\n" +
-                    vehicle.power + ",\n" +
-                    vehicle.price + "\n" +
+                    vehicle.getId() + ",\n" +
+                    "'" + vehicle.getType() + "',\n" +
+                    "'" + vehicle.getBrand() + "',\n" +
+                    "'" + vehicle.getName() + "',\n" +
+                    vehicle.getPower() + ",\n" +
+                    vehicle.getPrice() + "\n" +
                     ")\n";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
-            System.out.println("Vehicle with ID " + vehicle.id + " got imported successfully.");
+            System.out.println("Vehicle with ID " + vehicle.getId() + " got imported successfully.");
             connection.close();
             preparedStmt.close();
 
         } catch (SQLIntegrityConstraintViolationException es) {
-            System.out.println("Vehicle with ID " + vehicle.id + " is already in database. No import.");
+            System.out.println("Vehicle with ID " + vehicle.getId() + " is already in database. No import.");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void parseXmlFile(String location, int custOrVehic) throws IOException, ParserConfigurationException {
+    public static void parseXmlFile(String location, int custOrVehic) throws IOException, ParserConfigurationException {
         // get the factory and document builder
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
@@ -180,7 +180,7 @@ public class DBConnection {
         }
     }
 
-    public void parseDocument(Document dom, int custOrVehic) {
+    public static void parseDocument(Document dom, int custOrVehic) {
         // get the root element
         Element docEle = dom.getDocumentElement();
 
@@ -197,7 +197,9 @@ public class DBConnection {
                     Vehicle e = getVehicle(el);
 
                     // add it to list
-                    myVehicles.add(e);
+                    List<Vehicle> tmpVehicleList = AppData.getAppData().getMyVehicles();
+                    tmpVehicleList.add(e);
+                    AppData.getAppData().setMyVehicles(tmpVehicleList);
                 }
             }
         } else {
@@ -212,7 +214,9 @@ public class DBConnection {
                     Customer e = getCustomer(el);
 
                     // add it to list
-                    myCustomers.add(e);
+                    List<Customer> tmpCustList = AppData.getAppData().getMyCustomers();
+                    tmpCustList.add(e);
+                    AppData.getAppData().setMyCustomers(tmpCustList);
                 }
             }
         }
@@ -221,7 +225,7 @@ public class DBConnection {
     /**
      * I take a kunde element and read the values in, create a Customer object and return it
      */
-    private Customer getCustomer(Element empEl) {
+    private static Customer getCustomer(Element empEl) {
 
         // for each <kunde> element get text or int values of
         int id = getIntValue(empEl, "id");
@@ -239,7 +243,7 @@ public class DBConnection {
         return e;
     }
 
-    private Vehicle getVehicle(Element empEl) {
+    private static Vehicle getVehicle(Element empEl) {
 
         // for each <fahrzeug> element get text or int values
         int id = getIntValue(empEl, "id");
@@ -255,7 +259,7 @@ public class DBConnection {
         return e;
     }
 
-    private String getTextValue(Element ele, String tagName) {
+    private static String getTextValue(Element ele, String tagName) {
         String textVal = null;
         NodeList nl = ele.getElementsByTagName(tagName);
         if (nl != null && nl.getLength() > 0) {
@@ -266,23 +270,23 @@ public class DBConnection {
         return textVal;
     }
 
-    private int getIntValue(Element ele, String tagName) {
+    private static int getIntValue(Element ele, String tagName) {
         return Integer.parseInt(getTextValue(ele, tagName));
     }
 
-    public void printData(int custOrVehic) {
+    public static void printData(int custOrVehic) {
         if (custOrVehic == 0) {
-            System.out.println("Customers found: '" + myCustomers.size() + "'.");
+            System.out.println("Customers found: '" + AppData.getAppData().getMyCustomers().size() + "'.");
 
-            Iterator<Customer> it = myCustomers.iterator();
+            Iterator<Customer> it = AppData.getAppData().getMyCustomers().iterator();
             while (it.hasNext()) {
                 System.out.println(it.next().toString());
             }
             System.out.println();
         } else {
-            System.out.println("Vehicles found: '" + myVehicles.size() + "'.");
+            System.out.println("Vehicles found: '" + AppData.getAppData().getMyVehicles().size() + "'.");
 
-            Iterator<Vehicle> it = myVehicles.iterator();
+            Iterator<Vehicle> it = AppData.getAppData().getMyVehicles().iterator();
             while (it.hasNext()) {
                 System.out.println(it.next().toString());
             }
@@ -290,23 +294,23 @@ public class DBConnection {
         }
     }
 
-    public void updateCustomerDb() throws IOException, ParserConfigurationException {
+    public static void updateCustomerDb() throws IOException, ParserConfigurationException {
         // database doesn´t allow for duplicate IDs, so I can just import all Objects from xml files
-        Iterator<Customer> it = myCustomers.iterator();
+        Iterator<Customer> it = AppData.getAppData().getMyCustomers().iterator();
         while (it.hasNext()) {
             DBConnection.addCustomerToDb(it.next());
         }
     }
 
-    public void updateVehicleDb() throws IOException, ParserConfigurationException {
+    public static void updateVehicleDb() throws IOException, ParserConfigurationException {
         // database doesn´t allow for duplicate IDs, so I can just import all Objects from xml files
-        Iterator<Vehicle> it = myVehicles.iterator();
+        Iterator<Vehicle> it = AppData.getAppData().getMyVehicles().iterator();
         while (it.hasNext()) {
             DBConnection.addVehicleToDb(it.next());
         }
     }
 
-    public List<String> listFilesForFolder(final File folder) {
+    public static List<String> listFilesForFolder(final File folder) {
         List<String> xmlLocations = new ArrayList<>();
         for (final File fileEntry : folder.listFiles()) {
             if (fileEntry.isDirectory()) {
@@ -316,5 +320,6 @@ public class DBConnection {
             }
         }
         return xmlLocations;
+
     }
 }
