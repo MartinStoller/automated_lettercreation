@@ -19,16 +19,6 @@ import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public class LetterCreation {
-    public static void createLetters() {
-        System.out.println("Type 'y' if letters for each customer should be created. Type 'n' otherwise.");
-        Scanner scanner3 = new Scanner(System.in);
-        String yn = scanner3.nextLine();
-        if (yn.equals("y")) {
-            System.out.println("creating letters...");
-            createAllLetters();
-        }
-
-    }
 
     private static void convertTxtToPdf(String customerName){
         FileInputStream fis = null;
@@ -91,7 +81,8 @@ public class LetterCreation {
         }
     }
 
-    private static void createAllLetters() {
+    public static void createAllLetters() {
+        System.out.println("Creating letters...");
         //get variables for Letter
         String firstName = "Loading data did not work";
         String lastName = "Loading data did not work";
@@ -136,6 +127,7 @@ public class LetterCreation {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        System.out.println("done.");
         }
 
 

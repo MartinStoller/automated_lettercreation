@@ -333,7 +333,7 @@ public class DB_Connection {
         // database doesn´t allow for duplicate IDs, so I can just import all Objects from xml files
         Iterator<Customer> it = AppData.getAppData().getMyCustomers().iterator();
         while (it.hasNext()) {
-            DBConnection.addCustomerToDb(it.next());
+            DB_Connection.addCustomerToDb(it.next());
         }
     }
 
@@ -341,7 +341,7 @@ public class DB_Connection {
         // database doesn´t allow for duplicate IDs, so I can just import all Objects from xml files
         Iterator<Vehicle> it = AppData.getAppData().getMyVehicles().iterator();
         while (it.hasNext()) {
-            DBConnection.addVehicleToDb(it.next());
+            DB_Connection.addVehicleToDb(it.next());
         }
     }
 

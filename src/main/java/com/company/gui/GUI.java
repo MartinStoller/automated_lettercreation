@@ -1,17 +1,14 @@
 package com.company.gui;
 
-import com.company.businesslayer.app_data.AppData;
-import com.company.businesslayer.customer.Customer;
 import com.company.businesslayer.lettercreation.LetterCreation;
 import com.company.businesslayer.xml_location_input.Xml_location_input;
-import com.company.database.DBConnection;
+import com.company.database.DB_Connection;
 
 import javax.swing.*;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -47,13 +44,13 @@ public class GUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Kunden:");
                 System.out.println(" ID,Vorname,Nachname,Geschlecht,Straße,Nr,PLZ,Ort");
-                DBConnection.printDatabase("customers");
+                DB_Connection.printDatabase("customers");
                 System.out.println();
                 System.out.println();
 
                 System.out.println("Fahrzeuge:");
                 System.out.println("ID,Typ,Hersteller,Bezeichnung,Leistung,Preis");
-                DBConnection.printDatabase("vehicles");
+                DB_Connection.printDatabase("vehicles");
                 System.out.println();
                 System.out.println();
 
@@ -66,7 +63,7 @@ public class GUI extends JFrame {
                 Scanner scanner2 = new Scanner(System.in);
                 System.out.println("Type in SQL command:");
                 String query = scanner2.nextLine();
-                DBConnection.editDb(0, query);
+                DB_Connection.editDb(0, query);
             }
         });
 
@@ -77,14 +74,14 @@ public class GUI extends JFrame {
                 Scanner scanner3 = new Scanner(System.in);
                 System.out.println("Type in SQL command:");
                 String query = scanner3.nextLine();
-                DBConnection.editDb(1, query);
+                DB_Connection.editDb(1, query);
             }
         });
 
         letterButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LetterCreation.createLetters();
+                LetterCreation.createAllLetters();
             }
         });
 
@@ -97,28 +94,28 @@ public class GUI extends JFrame {
             try {
                 String[] locations = Xml_location_input.getLocations(); // get location of xml data
                 File customerFolder = new File(locations[0]);
-                List<String> customerXmlPaths = DBConnection.listFilesForFolder(customerFolder);
+                List<String> customerXmlPaths = DB_Connection.listFilesForFolder(customerFolder);
                 for (Object o : customerXmlPaths) {
                     String s = o.toString();
-                    DBConnection.parseXmlFile(locations[0]+"/"+s, 0);
+                    DB_Connection.parseXmlFile(locations[0]+"/"+s, 0);
                 }
-                DBConnection.printData(0);
+                DB_Connection.printData(0);
 
                 System.out.println("updating customer database...");
-                DBConnection.updateCustomerDb();
+                DB_Connection.updateCustomerDb();
                 System.out.println("done.");
                 System.out.println();
 
                 File vehicleFolder = new File(locations[1]);
-                List<String> vehicleXmlPaths = DBConnection.listFilesForFolder(vehicleFolder);
+                List<String> vehicleXmlPaths = DB_Connection.listFilesForFolder(vehicleFolder);
                 for (Object o : vehicleXmlPaths) {
                     String s = o.toString();
-                    DBConnection.parseXmlFile(locations[1]+"/"+s, 1);
+                    DB_Connection.parseXmlFile(locations[1]+"/"+s, 1);
                 }
-                DBConnection.printData(1);
+                DB_Connection.printData(1);
 
                 System.out.println("updating vehicle database...");
-                DBConnection.updateVehicleDb();
+                DB_Connection.updateVehicleDb();
                 System.out.println("done.");
                 System.out.println();
             }
