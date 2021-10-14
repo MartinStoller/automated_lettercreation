@@ -197,8 +197,6 @@ public class LetterCreation {
         return output;
     }
 
-
-
 }
 
 

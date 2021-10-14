@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AppData {
+    // Lists which store all objects retrieved from all xml files
     private List<Customer> myCustomers = new ArrayList<Customer>();
     private List<Vehicle> myVehicles = new ArrayList<Vehicle>();
 
@@ -23,6 +24,8 @@ public class AppData {
         return appData;
     }
 
+
+    // getter and setter for the two lists:
     public List<Customer> getMyCustomers() {
         return myCustomers;
     }

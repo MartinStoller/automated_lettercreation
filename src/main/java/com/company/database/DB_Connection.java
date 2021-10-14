@@ -73,6 +73,7 @@ public class DB_Connection {
 
 
     private static Connection createNewConnection() {
+        // return a connection to the DB
         DB_Connection db_connection = new DB_Connection();
         try {
             Connection connection = DriverManager.getConnection(db_connection.getUrl(), db_connection.getUser()
@@ -85,6 +86,7 @@ public class DB_Connection {
     }
 
     public static void printDatabase(String table) {
+        // print an entire table of the DB
         try{
             Connection connection = createNewConnection();
             Statement statement = connection.createStatement();
@@ -110,6 +112,7 @@ public class DB_Connection {
     }
 
     public static void editDb(int custOrVehic, String query) {
+        //takes a query (SQL command) as input and executes it
         try{
             Connection connection = createNewConnection();
             PreparedStatement preparedStmt = connection.prepareStatement(query);
@@ -130,9 +133,10 @@ public class DB_Connection {
     }
 
     public static void addCustomerToDb(Customer customer) {
+        //takes customer object and adds it to db
         try{
             Connection connection = createNewConnection();
-
+            // get SQL command for adding customer and subsequently execute it:
             String query = "INSERT INTO `haeger-db`.`customers`\n" +
                     "(`id`,\n" +
                     "`firstname`,\n" +
@@ -165,9 +169,10 @@ public class DB_Connection {
     }
 
     public static void addVehicleToDb(Vehicle vehicle) {
+        //takes vehicle object and adds it to db
         try {
             Connection connection = createNewConnection();
-
+            // create SQL command and subsequently execute it:
             String query = "INSERT INTO `haeger-db`.`vehicles`\n" +
                     "(`id`,\n" +
                     "`type`,\n" +
@@ -197,14 +202,18 @@ public class DB_Connection {
     }
 
     public static void parseXmlFile(String location, int custOrVehic) throws IOException, ParserConfigurationException {
+        //TODO: move to business layer???
+
         // get the factory and document builder
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
         try {
             DocumentBuilder db = dbf.newDocumentBuilder();
 
-            // parse using builder to get DOM representation of the XML file
+            // parse using builder to get DOM representation of the XML file at location
             Document dom = db.parse(location);
+            // call parseDocument() on the DOM representation of the XML file, which adds each element in the file to
+            // a summarizing data list
             parseDocument(dom, custOrVehic);
 
         } catch (SAXException se) {
@@ -215,6 +224,10 @@ public class DB_Connection {
     }
 
     public static void parseDocument(Document dom, int custOrVehic) {
+        //TODO: move to business layer???
+        //Takes dom representation of an xml file and adds each element of that file to the list of existing customers
+        // or vehicles
+
         // get the root element
         Element docEle = dom.getDocumentElement();
 
@@ -227,7 +240,7 @@ public class DB_Connection {
                     // get each element of "fahrzeuge"
                     Element el = (Element) nl.item(i);
 
-                    // get the vehicle/customer object
+                    // create the vehicle object from the fahrzeug element
                     Vehicle e = getVehicle(el);
 
                     // add it to list
@@ -244,7 +257,7 @@ public class DB_Connection {
                     // get each element of "kunde"
                     Element el = (Element) nl.item(i);
 
-                    // get the vehicle/customer object
+                    // create the customer object from the kunde element
                     Customer e = getCustomer(el);
 
                     // add it to list
@@ -256,12 +269,11 @@ public class DB_Connection {
         }
     }
 
-
-    /**
-     * I take a kunde element and read the values in, create a Customer object and return it
-     */
     private static Customer getCustomer(Element empEl) {
-
+/**
+ * I take a kunde element and read the values in, create a Customer object and return it
+ */
+//TODO: move to business layer???
         // for each <kunde> element get text or int values of
         int id = getIntValue(empEl, "id");
         String firstName = getTextValue(empEl, "vorname");
@@ -279,7 +291,7 @@ public class DB_Connection {
     }
 
     private static Vehicle getVehicle(Element empEl) {
-
+        //TODO: move to business layer???
         // for each <fahrzeug> element get text or int values
         int id = getIntValue(empEl, "id");
         String type = getTextValue(empEl, "fahrzeugtyp");
@@ -295,6 +307,9 @@ public class DB_Connection {
     }
 
     private static String getTextValue(Element ele, String tagName) {
+        //TODO: move to business layer???
+
+        // get String value from element in xml file
         String textVal = null;
         NodeList nl = ele.getElementsByTagName(tagName);
         if (nl != null && nl.getLength() > 0) {
@@ -306,10 +321,12 @@ public class DB_Connection {
     }
 
     private static int getIntValue(Element ele, String tagName) {
+        //TODO: move to business layer???
         return Integer.parseInt(getTextValue(ele, tagName));
     }
 
     public static void printData(int custOrVehic) {
+        //TODO: move to business layer???
         if (custOrVehic == 0) {
             System.out.println("Customers found: '" + AppData.getAppData().getMyCustomers().size() + "'.");
 
@@ -330,6 +347,7 @@ public class DB_Connection {
     }
 
     public static void updateCustomerDb() throws IOException, ParserConfigurationException {
+        // iterate through list of existing customers and add them to DB
         // database doesn´t allow for duplicate IDs, so I can just import all Objects from xml files
         Iterator<Customer> it = AppData.getAppData().getMyCustomers().iterator();
         while (it.hasNext()) {
@@ -338,6 +356,7 @@ public class DB_Connection {
     }
 
     public static void updateVehicleDb() throws IOException, ParserConfigurationException {
+        // iterate through list of existing vehicles and add them to DB
         // database doesn´t allow for duplicate IDs, so I can just import all Objects from xml files
         Iterator<Vehicle> it = AppData.getAppData().getMyVehicles().iterator();
         while (it.hasNext()) {

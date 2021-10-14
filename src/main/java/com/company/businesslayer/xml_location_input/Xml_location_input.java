@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Xml_location_input {
     public static String[] getLocations() {
+        // get locations of the directories which contain the xml files from user:
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the location (directory)" +
                 " of the customer datafiles (must be XML format):");
