@@ -6,3 +6,5 @@ The tool does the following things:
  - It loads xml files of fake customers and vehicles and adds them to a mySQL database.
  - It allows the user to read and edit the database.
  - It automatically creates letters (in German language) for each customer, advertising the currently available cars.
+
+This is my first ever Java project and was done in 35-40 working hours, so naturally it will be far from optimal.
